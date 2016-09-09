@@ -35,7 +35,8 @@ class UserTimelineItemTitle
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
         'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',
-        'is_blocked': 'COMMON.FIELDS.IS_BLOCKED'
+        'is_blocked': 'COMMON.FIELDS.IS_BLOCKED',
+        'color': 'COMMON.FIELDS.COLOR'
     }
 
     _params: {
@@ -122,9 +123,9 @@ class UserTimelineItemTitle
             "task": ["project-tasks-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "parent_userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'userstory', 'ref'])"],
-            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"]
+            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"],
+            "epic": ["project-epics-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"]
         }
-
         return url[event.obj][0] + url[event.obj][1]
 
     _getLink: (url, text, title) ->
